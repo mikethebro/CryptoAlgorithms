@@ -1,4 +1,4 @@
-while sleep 3600
+while sleep 300
 do
     python parser.py
 done
