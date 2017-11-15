@@ -24,16 +24,46 @@ for each in json:
 	file_data = open("/home/pi/src/CryptoAlgorithms/"+each['id']+".txt", "a")
 	file_data.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+"|")
 	c = currency(each['id'], each["symbol"])
+
 	c.rank = each['rank']
+	if c.rank is None:
+		c.rank = 'None'
+
 	c.price_usd = each['price_usd']
+	if c.price_usd is None:
+		c.price_usd = 'None'
+
 	c.price_btc = each['price_btc']
+	if c.price_btc is None:
+		c.price_btc = 'None'
+
 	c.h24_volume_usd = each['24h_volume_usd']
+	if c.h24_volume_usd is None:
+		c.h24_volume_usd = 'None'
+
 	c.market_cap_usd = each['market_cap_usd']
+	if c.market_cap_usd is None:
+		c.market_cap_usd = 'None'
+
 	c.available_supply = each['available_supply']
+	if c.available_supply is None:
+		c.available_supply = 'None'
+
 	c.total_supply = each['total_supply']
+	if c.total_supply is None:
+		c.total_supply = 'None'
+
 	c.perc_change_1hr = each['percent_change_1h']
+	if c.perc_change_1hr is None:
+		c.perc_change_1hr = 'None'
+
 	c.perc_change_24hr = each['percent_change_24h']
+	if c.perc_change_24hr is None:
+		c.perc_change_24hr = 'None'
+
 	c.perc_change_7d = each['percent_change_7d']
-	#file_data = open("/home/stan/Projects/BitTrader/data.txt", "a")
+	if c.perc_change_7d is None:
+		c.perc_change_7d = 'None'
+
 	file_data.write(c.name +"|"+ c.symbol+"|"+c.price_usd+"|"+c.price_btc+"|"+c.h24_volume_usd+"|"+c.market_cap_usd+"|"+c.available_supply+"|"+c.total_supply+"|"+c.perc_change_1hr+"|"+c.perc_change_24hr+"|"+c.perc_change_7d+"|")
 	file_data.write("\n")
