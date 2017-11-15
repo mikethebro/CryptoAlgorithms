@@ -7,8 +7,10 @@ class currency:
 		self.symbol = symbol
 
 def get_json():
-    r = requests.get('https://api.coinmarketcap.com/v1/ticker/?limit=20')
-    return r.json()
+    r = requests.get('https://api.coinmarketcap.com/v1/ticker/?limit=100')
+    print r.status_code
+    #x = r.json()    
+    return r.json
 
 def print_to_file(json):
     file_data = open("data.txt", "a")
@@ -19,7 +21,7 @@ def print_to_file(json):
 
 json = get_json()
 for each in json:
-	file_data = open("/home/michael/src/CryptoAlgorithms/"+each['id']+".txt", "a")
+	file_data = open("/home/pi/src/CryptoAlgorithms/"+each['id']+".txt", "a")
 	file_data.write(datetime.now().strftime('%Y-%m-%d %H:%M:%S')+"|")
 	c = currency(each['id'], each["symbol"])
 	c.rank = each['rank']
